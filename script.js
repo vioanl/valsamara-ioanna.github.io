@@ -128,3 +128,27 @@
   body.addEventListener('click', (e) => { if (e.target.closest('a[href^="#"]')) dialog.close(); });
   dialog.addEventListener('close', () => { if (opener) opener.focus(); });
 })();
+
+// ---------------------------------------------------------
+// 3. Videos. <div class="video" data-video="LINK"> becomes an
+//    embedded player. Works with YouTube and Vimeo links.
+//    An empty data-video shows a placeholder box.
+// ---------------------------------------------------------
+(function () {
+  document.querySelectorAll('.video[data-video]').forEach((box) => {
+    const link = box.dataset.video.trim();
+    const yt = link.match(/(?:youtu\.be\/|[?&]v=|embed\/|shorts\/)([\w-]{11})/) || link.match(/^([\w-]{11})$/);
+    const vimeo = link.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    let src = '';
+    if (yt) src = 'https://www.youtube-nocookie.com/embed/' + yt[1];
+    else if (vimeo) src = 'https://player.vimeo.com/video/' + vimeo[1];
+    if (!src) { box.classList.add('missing'); return; }
+    const frame = document.createElement('iframe');
+    frame.src = src;
+    frame.title = box.dataset.title || 'Video';
+    frame.loading = 'lazy';
+    frame.allow = 'accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+    frame.allowFullscreen = true;
+    box.appendChild(frame);
+  });
+})();
