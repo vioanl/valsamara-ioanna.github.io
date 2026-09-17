@@ -19,12 +19,17 @@ with **Add file → Create new file**, name it `.nojekyll`, leave it empty.
 
 ## Editing
 
-- **Add a score:** in `index.html`, copy an `<article class="score">` block,
+The home page (`index.html`) shows only the name and the circular staff.
+Each menu item is its own page: `scores.html`, `recordings.html`,
+`performances.html`, `about.html` (with publications and press), `contact.html`.
+The menu is repeated at the top of every page, so change it in all six files.
+
+- **Add a score:** in `scores.html`, copy an `<article class="score">` block,
   change its `id`, image, text and link. Put the image in `images/`.
-- **Add a record:** copy an `<li>` in the recordings list, give it a new
+- **Add a record:** in `recordings.html`, copy an `<li>` in the recordings list, give it a new
   `data-record` name, and add a matching `<div id="record-NAME">` with the
   notes further down.
-- **Add a performance:** add a `<tr>` row to the table.
+- **Add a performance:** in `performances.html`, add a `<tr>` row to the table.
 - **Colours:** change the variables at the top of `style.css`.
 
 ## Preview locally

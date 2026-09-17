@@ -61,26 +61,31 @@ a:hover { text-decoration-thickness: 2px; }
 .site-header ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .25rem 1.4rem; }
 .site-header nav a { font-family: var(--display); font-weight: 500; font-size: .95rem; color: var(--ink); text-decoration: none; }
 .site-header nav a:hover { color: var(--signal); }
+.site-header nav a[aria-current="page"] { color: var(--signal); text-decoration: underline; text-underline-offset: .35em; text-decoration-thickness: 2px; }
 
-/* ---------- hero ---------- */
+/* ---------- home ---------- */
+body.home { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; }
+body.home main { flex: 1; display: flex; }
 .hero {
+  flex: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   align-items: center;
   gap: 2rem var(--gutter);
-  padding: clamp(2rem, 6vw, 5rem) var(--gutter) clamp(3rem, 7vw, 6rem);
-  min-height: min(88vh, 56rem);
+  padding: clamp(1.5rem, 4vh, 3.5rem) var(--gutter);
 }
+.hero-text { container-type: inline-size; }
 .hero h1 {
   font-family: var(--display);
   font-weight: 800;
-  font-size: clamp(3.2rem, 1rem + 9vw, 9rem);
-  line-height: .86;
-  letter-spacing: -0.045em;
-  margin: 0 0 2rem;
+  font-size: clamp(2.6rem, 6vw, 8rem);  /* fallback */
+  font-size: 11cqi;                      /* the name always fits its column */
+  line-height: .9;
+  letter-spacing: -0.04em;
+  margin: 0 0 clamp(1.25rem, 3vh, 2rem);
 }
-.lede { max-width: 30rem; margin: 0; font-size: clamp(1.15rem, 1rem + .5vw, 1.45rem); line-height: 1.45; }
-.hero-staff { margin: 0; }
+.lede { max-width: 30rem; margin: 0; font-size: clamp(1.1rem, 1rem + .5vw, 1.4rem); line-height: 1.45; }
+.hero-staff { margin: 0; justify-self: center; width: min(100%, calc(100svh - 12rem)); }
 #staff { width: 100%; aspect-ratio: 1 / 1; display: block; }
 .hero-staff figcaption { margin-top: .75rem; font-size: .9rem; color: var(--graphite); max-width: 26rem; }
 #redraw {
@@ -89,8 +94,9 @@ a:hover { text-decoration-thickness: 2px; }
 }
 
 /* ---------- sections ---------- */
-.section { padding: clamp(3rem, 7vw, 6rem) var(--gutter); border-top: 1px solid var(--rule); }
-.section > h2, .two-col h2, .site-footer h2 {
+.section { padding: clamp(2.5rem, 6vw, 5rem) var(--gutter); }
+.section + .section { border-top: 1px solid var(--rule); }
+.section > h1, .two-col h2, .contact h1 {
   font-family: var(--display); font-weight: 700;
   font-size: clamp(2.2rem, 1.2rem + 4vw, 4.5rem);
   letter-spacing: -0.035em; line-height: 1; margin: 0 0 1rem;
@@ -171,20 +177,26 @@ dialog::backdrop { background: rgba(10, 12, 15, .72); }
 .prose { max-width: var(--measure); }
 .prose p:first-child { font-size: 1.2em; line-height: 1.5; }
 
-/* ---------- footer ---------- */
-.site-footer { background: var(--ink); color: var(--paper); padding: clamp(3rem, 7vw, 6rem) var(--gutter) 2.5rem; }
-.site-footer a { color: var(--paper); }
-.site-footer a:hover { color: var(--paper); text-decoration-thickness: 2px; }
-.email { font-family: var(--display); font-weight: 700; font-size: clamp(1.3rem, .8rem + 3vw, 3rem); letter-spacing: -0.02em; margin: 0 0 2rem; overflow-wrap: anywhere; }
+/* ---------- contact page ---------- */
+body.inner:has(.contact) { min-height: 100vh; display: flex; flex-direction: column; background: var(--ink); color: var(--paper); }
+body.inner:has(.contact) main { flex: 1; }
+body.inner:has(.contact) .site-header { background: var(--ink); border-color: color-mix(in srgb, var(--paper) 20%, transparent); }
+body.inner:has(.contact) .site-header a { color: var(--paper); }
+.contact { padding: clamp(3rem, 8vw, 7rem) var(--gutter) 2.5rem; }
+.contact a { color: var(--paper); }
+.contact :focus-visible, body.inner:has(.contact) :focus-visible { outline-color: var(--paper); }
+.email { font-family: var(--display); font-weight: 700; font-size: clamp(1.3rem, .8rem + 3vw, 3rem); letter-spacing: -0.02em; margin: 1rem 0 2rem; overflow-wrap: anywhere; }
 .links { list-style: none; padding: 0; margin: 0 0 3rem; display: flex; flex-wrap: wrap; gap: .5rem 2rem; }
 .small { font-size: .85rem; opacity: .7; margin: 0; }
-.site-footer :focus-visible { outline-color: var(--paper); }
+
+/* ---------- footer on inner pages ---------- */
+.page-footer { padding: 2rem var(--gutter) 3rem; border-top: 1px solid var(--rule); font-family: var(--display); font-size: .95rem; }
 
 /* ---------- small screens ---------- */
 @media (max-width: 52rem) {
   .site-header { position: static; }
-  .hero { grid-template-columns: 1fr; min-height: 0; }
-  .hero-staff { max-width: 28rem; }
+  .hero { grid-template-columns: 1fr; align-content: start; }
+  .hero-staff { width: min(100%, 28rem); justify-self: start; }
   .score { grid-template-columns: 1fr; }
   .score-image { order: -1; }
   .two-col { grid-template-columns: 1fr; }
