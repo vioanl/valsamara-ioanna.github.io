@@ -21,7 +21,7 @@ with **Add file → Create new file**, name it `.nojekyll`, leave it empty.
 
 The home page (`index.html`) shows only the name and the circular staff.
 Each menu item is its own page: `scores.html`, `recordings.html`,
-`installations.html` (installations and video art), `performances.html`, `press.html` (publications and press) and `about.html` (biography, with contact at the bottom).
+`installations.html`, `video-art.html`, `performances.html`, `press.html` (publications and press) and `about.html` (biography, with contact at the bottom).
 The menu is repeated at the top of every page, so change it in every .html file.
 
 - **Add a score:** in `scores.html`, copy an `<article class="score">` block,
@@ -29,13 +29,13 @@ The menu is repeated at the top of every page, so change it in every .html file.
 - **Add a record:** in `recordings.html`, copy an `<li>` in the recordings list, give it a new
   `data-record` name, and add a matching `<div id="record-NAME">` with the
   notes further down.
-- **Add an installation or video:** in `installations.html`, copy an
-  `<article class="work">` block. For YouTube, change the code after
-  `/embed/` (the part after `youtu.be/`). For Instagram, change the link in
-  both places inside the `<blockquote>`.
-- **Installation and video art photos:** upload them into `images/` named
-  `installation-1.jpg` … `installation-6.jpg` and `video-art-1.jpg` …
-  `video-art-6.jpg`. Missing numbers are hidden. Lowercase names, `.jpg`.
+- **Installations and video art:** each has a list page (`installations.html`,
+  `video-art.html`) that looks like the scores page, and each work has its own
+  page (`installation-1.html`, `video-art-1.html`) with video and photos.
+  Replace everything in [square brackets]. Photos go in `images/` named
+  `installation-1-photo-1.jpg`, `installation-1-photo-2.jpg` … (up to 8);
+  photo 1 also appears on the list page. For a new work, copy both the
+  `<article>` on the list page and the work's page, and change the number.
 - **Add a performance:** in `performances.html`, add a `<tr>` row to the table.
 - **Colours:** change the variables at the top of `style.css`.
 
