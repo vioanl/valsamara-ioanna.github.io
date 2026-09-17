@@ -176,6 +176,9 @@ body.home main { flex: 1; display: flex; }
 
 /* single text column under a video */
 .single .m-text { grid-column: 1 / 9; }
+.lead { font-size: 1.2em; line-height: 1.5; }
+.narration p { max-width: 36rem; }
+.single .group-title { margin-top: 2.5rem; }
 
 /* empty slots show where things go */
 .missing { border: 1px dashed var(--graphite); display: grid; place-items: center; padding: 1rem; background: none; }
