@@ -96,7 +96,7 @@ body.home main { flex: 1; display: flex; }
 /* ---------- sections ---------- */
 .section { padding: clamp(2.5rem, 6vw, 5rem) var(--gutter); }
 .section + .section { border-top: 1px solid var(--rule); }
-.section > h1, .two-col h2, .contact h1 {
+.section > h1, .two-col h2, .contact h2 {
   font-family: var(--display); font-weight: 700;
   font-size: clamp(2.2rem, 1.2rem + 4vw, 4.5rem);
   letter-spacing: -0.035em; line-height: 1; margin: 0 0 1rem;
@@ -132,6 +132,27 @@ body.home main { flex: 1; display: flex; }
 .score-image.text-score img { max-height: 30rem; }
 .score-image.photo { padding: 0; background: none; }
 .score-image.photo img { width: 100%; max-height: none; }
+
+/* ---------- installations & video ---------- */
+.work {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 1.5rem var(--gutter);
+  align-items: start;
+  padding: clamp(2rem, 4vw, 3.5rem) 0;
+  border-top: 1px solid var(--rule);
+}
+.work h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.2rem); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 .6rem; }
+.work-text p { max-width: var(--measure); }
+.video { position: relative; aspect-ratio: 16 / 9; background: var(--ink); }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.work-media.insta { max-width: 540px; }
+.gallery { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(17rem, 100%), 1fr)); gap: 1rem; margin-top: 1rem; }
+.gallery:not(:has(figure)) { display: none; }
+.gallery figure { margin: 0; }
+.gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.gallery a:hover img { outline: 2px solid var(--signal); outline-offset: 3px; }
+.work-media .instagram-media { margin: 0 !important; min-width: 0 !important; width: 100% !important; }
 
 /* ---------- recordings ---------- */
 .covers { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr)); gap: 2rem 1.5rem; }
@@ -173,18 +194,16 @@ dialog::backdrop { background: rgba(10, 12, 15, .72); }
 /* ---------- publications, about ---------- */
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem var(--gutter); }
 .two-col h2 { font-size: clamp(1.8rem, 1.2rem + 2vw, 2.8rem); }
-.entry { max-width: 30rem; }
+.entry { max-width: 34rem; margin: 0 0 1rem; }
+#press .group-title:first-of-type { margin-top: 1.5rem; }
 .prose { max-width: var(--measure); }
 .prose p:first-child { font-size: 1.2em; line-height: 1.5; }
 
-/* ---------- contact page ---------- */
-body.inner:has(.contact) { min-height: 100vh; display: flex; flex-direction: column; background: var(--ink); color: var(--paper); }
-body.inner:has(.contact) main { flex: 1; }
-body.inner:has(.contact) .site-header { background: var(--ink); border-color: color-mix(in srgb, var(--paper) 20%, transparent); }
-body.inner:has(.contact) .site-header a { color: var(--paper); }
-.contact { padding: clamp(3rem, 8vw, 7rem) var(--gutter) 2.5rem; }
+/* ---------- contact band (bottom of About) ---------- */
+.contact { background: var(--ink); color: var(--paper); padding: clamp(3rem, 7vw, 6rem) var(--gutter) 2.5rem; }
 .contact a { color: var(--paper); }
-.contact :focus-visible, body.inner:has(.contact) :focus-visible { outline-color: var(--paper); }
+.contact a:hover { text-decoration-thickness: 2px; }
+.contact :focus-visible { outline-color: var(--paper); }
 .email { font-family: var(--display); font-weight: 700; font-size: clamp(1.3rem, .8rem + 3vw, 3rem); letter-spacing: -0.02em; margin: 1rem 0 2rem; overflow-wrap: anywhere; }
 .links { list-style: none; padding: 0; margin: 0 0 3rem; display: flex; flex-wrap: wrap; gap: .5rem 2rem; }
 .small { font-size: .85rem; opacity: .7; margin: 0; }
@@ -197,7 +216,7 @@ body.inner:has(.contact) .site-header a { color: var(--paper); }
   .site-header { position: static; }
   .hero { grid-template-columns: 1fr; align-content: start; }
   .hero-staff { width: min(100%, 28rem); justify-self: start; }
-  .score { grid-template-columns: 1fr; }
+  .score, .work { grid-template-columns: 1fr; }
   .score-image { order: -1; }
   .two-col { grid-template-columns: 1fr; }
   .dialog-inner { grid-template-columns: 1fr; }
