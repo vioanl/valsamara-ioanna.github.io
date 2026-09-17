@@ -180,6 +180,12 @@ body.home main { flex: 1; display: flex; }
 .narration p { max-width: 36rem; }
 .single .group-title { margin-top: 2.5rem; }
 
+/* net art: live work in a frame */
+.live-frame { margin: clamp(2rem, 4vw, 3.5rem) 0; }
+.live-frame iframe { width: 100%; aspect-ratio: 4 / 3; max-height: 85vh; border: 1px solid var(--rule); background: #222; display: block; }
+.live-frame figcaption { margin-top: .6rem; font-size: .92rem; color: var(--graphite); }
+.dance .p1.map { aspect-ratio: auto; }
+
 /* empty slots show where things go */
 .missing { border: 1px dashed var(--graphite); display: grid; place-items: center; padding: 1rem; background: none; }
 .missing::after { content: attr(data-placeholder); color: var(--graphite); font-size: .9rem; text-align: center; }
